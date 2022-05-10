@@ -1,0 +1,37 @@
+22:23:26 **** Incremental Build of configuration Debug for project hello_AVR ****
+make all 
+Building file: ../main.c
+Invoking: AVR Compiler
+avr-gcc -Wall -g2 -gstabs -O0 -fpack-struct -fshort-enums -ffunction-sections -fdata-sections -std=gnu99 -funsigned-char -funsigned-bitfields -mmcu=atmega32 -DF_CPU=8000000UL -MMD -MP -MF"main.d" -MT"main.o" -c -o "main.o" "../main.c"
+In file included from ../main.c:9:
+c:/imt_sdk_win_64/winavr/lib/gcc/../../avr/include/util/delay.h:90:3: warning: #warning "Compiler optimizations disabled; functions from <util/delay.h> won't work as designed"
+Finished building: ../main.c
+ 
+Building target: hello_AVR.elf
+Invoking: AVR C Linker
+avr-gcc -Wl,-Map,hello_AVR.map -mmcu=atmega32 -o "hello_AVR.elf"  ./main.o   
+Finished building target: hello_AVR.elf
+ 
+Invoking: AVR Create Extended Listing
+avr-objdump -h -S hello_AVR.elf  >"hello_AVR.lss"
+Finished building: hello_AVR.lss
+ 
+Create Flash image (ihex format)
+avr-objcopy -R .eeprom -R .fuse -R .lock -R .signature -O ihex hello_AVR.elf  "hello_AVR.hex"
+Finished building: hello_AVR.hex
+ 
+Invoking: Print Size
+avr-size --format=avr --mcu=atmega32 hello_AVR.elf
+AVR Memory Usage
+----------------
+Device: atmega32
+
+Program:    3492 bytes (10.7% Full)
+(.text + .data + .bootloader)
+
+Data:          8 bytes (0.4% Full)
+(.data + .bss + .noinit)
+
+
+Finished building: sizedummy
+ 
